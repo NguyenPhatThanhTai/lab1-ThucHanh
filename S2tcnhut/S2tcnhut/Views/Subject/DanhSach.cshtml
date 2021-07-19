@@ -1,0 +1,39 @@
+﻿@model List<S2tcnhut.Models.MonHoc>
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@section header{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã môn học</th>
+            <th>Tên môn học</th>
+            <th>Số tín chỉ</th>
+            <th>Học kỳ</th>
+            <th>Mã ngành</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+        <tr>
+            <td>@items.MaMH</td>
+            <td>@items.TenMH</td>
+            <td>@items.SoTinChi</td>
+            <td>@items.HocKi</td>
+            <td>@items.MaNganh</td>
+            <td>
+                <button class="btn btn-success">Chi tiết</button>
+                <button onclick="location.href='@Url.Action("suaMH", "Subject", new { Id = items.MaMH})'" class="btn btn-warning">Sửa nó</button>
+                <button onclick="location.href='@Url.Action("xoaMH", "Subject", new { Id = items.MaMH})'" class="btn btn-danger">Xóa nó</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

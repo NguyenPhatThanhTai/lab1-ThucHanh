@@ -1,0 +1,49 @@
+﻿body {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+header {
+    height: 100px;
+    margin-top: 10px;
+    background-color: rgb(235, 235, 98);
+    border-top: 3px solid blue;
+}
+
+.Navigation-bar {
+    text-align: center;
+    background-color: rgb(39, 124, 204);
+    color: white;
+    padding: 10px;
+}
+
+    .Navigation-bar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+        .Navigation-bar a:hover {
+            background-color: rgb(235, 235, 98);
+            color: black;
+        }
+
+.main {
+    height: fit-content;
+    background-color: antiquewhite;
+}
+
+.table {
+    text-align: center;
+}
+
+footer {
+    background-color: rgb(39, 124, 204);
+    border-bottom: 5px solid yellow;
+    margin-bottom: 10px;
+}
+
+    footer p {
+        padding: 20px;
+        color: white;
+    }

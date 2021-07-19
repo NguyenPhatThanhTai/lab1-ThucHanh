@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ThemSinhVien";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Content/ThemSinhVien.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+@Html.ValidationSummary(true, null)
+@using (Html.BeginForm("ThemSinhVien", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div class="contain-all">
+    <div class="Review-Avatar">
+        <div id="ava">
+            <img id="iconPick" width="200px" src="~/Content/tải xuống.png">
+        </div>
+        <input type="file" name="Icon" class="btn btn-info" onchange="loadFile(event)" required>
+    </div>
+    <div class="Input">
+        <form>
+            <div class="form-group">
+                <label for="pwd">Họ tên:</label>
+                <input type="text" class="form-control" id="pwd" name="HoTen" required>
+                <label for="pwd">Giới tính:</label>
+                <input type="text" class="form-control" id="pwd" name="GioiTinh" required>
+                <label for="pwd">Ngày sinh:</label>
+                <input type="date" class="form-control" name="NgaySinh" id="pwd" required>
+                <label for="pwd">Chọn mã ngành:</label>
+                <select class="form-control" id="sel1" name="MaNganh">
+                    @foreach (var items in ViewBag.ListNganh)
+                    {
+                        <option value="@items.MaNganh">@items.TenNganh</option>
+                    }
+                </select>
+                <br />
+                <input type="submit" value="Thêm sinh viên" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+}
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('iconPick');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
+

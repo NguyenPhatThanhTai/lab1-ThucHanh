@@ -1,0 +1,23 @@
+﻿.contain-all {
+    display: grid;
+    grid-template-areas: 'img input input input input input';
+}
+
+.Review-Avatar {
+    text-align: center;
+    grid-area: img;
+    margin: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 30px;
+}
+
+    .Review-Avatar img {
+        margin: 20px;
+        border-radius: 30px;
+    }
+
+.Input {
+    grid-area: input;
+    margin: 20px;
+}

@@ -1,0 +1,35 @@
+﻿.contain-student {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.student {
+    background-color: rgb(95, 168, 211);
+    margin: 20px;
+    text-align: center;
+    border-radius: 30px;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 5px 10px black;
+    width: 350px;
+}
+
+    .student #avatar img {
+        margin: 20px;
+        border-radius: 30%;
+    }
+
+    .student #information {
+        text-align: left;
+        margin: 30px;
+    }
+
+.action-button button {
+    width: 90%;
+    margin: 10px;
+    color: black;
+    border-radius: 30px;
+}
+
+.box-subject {
+    padding: 10px;
+}
