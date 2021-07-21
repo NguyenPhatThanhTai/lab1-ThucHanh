@@ -1,0 +1,58 @@
+﻿@model List<S4NPTTAI01.Models.Thuoc>
+@{
+    ViewBag.Title = "Danh sách thuốc";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+<div class="box-subject">
+    <select onchange="" class="form-control combobox" id="sel1">
+        <option>Chọn mã ngành để lọc</option>
+        @foreach (var items in ViewBag.dsLoaiBenh)
+        {
+            <option value="@items.MaBenh">@items.TenBenh</option>
+        }
+    </select>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã thuốc</th>
+            <th>Tên thuốc</th>
+            <th>Cách dùng</th>
+            <th>Dạng thuốc</th>
+            <th>Mã bệnh</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.MaT</td>
+                <td>@items.TenT</td>
+                <td>@items.CachDung</td>
+                <td>@items.DangThuoc</td>
+                <td>@items.MaBenh</td>
+                <td>
+                    <button onclick="location.href='@Url.Action("ChiTiet", "Drug2", new { Id = items.MaT})'" class="btn btn-success">Chi tiết</button>
+                    <button onclick="location.href='@Url.Action("SuaThuoc", "Drug2", new { Id = items.MaT})'" class="btn btn-warning">Sửa thuốc</button>
+                    <button onclick="location.href='@Url.Action("XoaThuoc", "Drug2", new { Id = items.MaT})'" class="btn btn-danger">Xóa thuốc</button>
+                    <button onclick="location.href='@Url.Action("themGioHang", "Drug2", new { Id = items.MaT})'" class="btn btn-info">Thêm giỏ hàng</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(".combobox").change(function () {
+        var id = $(this).val();
+        $('body').load('@Url.Action("Fillter", "Drug2")?Id=' + id);
+    })
+</script>
+

@@ -1,0 +1,34 @@
+﻿@model List<S4NPTTAI01.Models.Benh>
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Content/TrangChu.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+<div class="contain-student">
+    @foreach (var items in Model)
+    {
+        <div class="student">
+            <div id="avatar">
+                <img width="200px" src="~/Content/avatar/@items.Hinh">
+            </div>
+            <div id="information">
+                <p><b>Mã bệnh: </b>@items.MaB</p>
+                <p><b>Tên bệnh: </b>@items.TenB</p>
+                <p><b>Triệu chứng: </b>@items.TrieuChung</p>
+                <p><b>Ngày bệnh: </b>@items.NgayBenh.Value.ToString("dd/MM/yyyy")</p>
+                <p><b>Mã bệnh: </b>@items.MaBenh</p>
+            </div>
+            <div class="action-button">
+                <button class="btn btn-success" onclick="location.href='@Url.Action("chiTiet", "Drug", new { Id = items.MaB})'">Xem chi tiết >>></button>
+                <button class="btn btn-warning" onclick="location.href='@Url.Action("suaBenh", "Drug", new { Id = items.MaB})'">Sửa thông tin >>></button>
+                <button class="btn btn-danger" onclick="location.href='@Url.Action("xoaBenh", "Drug", new { Id = items.MaB})'">Xóa bệnh này >>></button>
+            </div>
+        </div>
+    }
+</div>
+

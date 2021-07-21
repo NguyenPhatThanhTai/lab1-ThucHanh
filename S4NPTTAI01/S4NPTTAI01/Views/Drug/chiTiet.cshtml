@@ -1,0 +1,29 @@
+﻿@model S4NPTTAI01.Models.Benh
+@{
+    ViewBag.Title = "chiTiet";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Content/ThemThuoc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+<div class="contain-all">
+    <div class="Review-Avatar">
+        <div id="ava">
+            <img id="iconPick" width="200px" src="~/Content/avatar/@Model.Hinh">
+        </div>
+    </div>
+    <div class="Input">
+        <form>
+            <div class="form-group">
+                <p for="pwd"><b>Mã bệnh:</b> @Model.MaB</p>
+                <p for="pwd"><b>Tên bệnh:</b> @Model.TenB</p>
+                <p for="pwd"><b>Triệu chứng:</b> @Model.TrieuChung</p>
+                <p for="pwd"><b>Ngày bệnh:</b> @Model.NgayBenh.Value.ToString("yyyy-MM-dd")</p>
+                <p for="pwd"><b>Mã bệnh:</b> @Model.MaBenh</p>
+            </div>
+        </form>
+    </div>
+</div>
+

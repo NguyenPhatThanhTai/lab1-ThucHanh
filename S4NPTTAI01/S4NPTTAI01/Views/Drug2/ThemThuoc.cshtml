@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "ThemThuoc";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Content/ThemThuoc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+@Html.ValidationSummary(true, null)
+@using (Html.BeginForm("ThemThuoc", "Drug2", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="contain-all">
+        <div class="Review-Avatar">
+            <div id="ava">
+                <img id="iconPick" width="200px" src="~/Content/gettyimages-826753434_custom-4b8d6dc04d2e72b759aae4abc32570d6c84f15b9.jpg">
+            </div>
+        </div>
+        <div class="Input">
+            <form>
+                <div class="form-group">
+                    <label for="pwd">Tên thuốc:</label>
+                    <input type="text" class="form-control" id="pwd" name="TenT" required>
+                    <label for="pwd">Dạng thuốc:</label>
+                    <input type="text" class="form-control" id="pwd" name="DangThuoc" required>
+                    <label for="pwd">Cách dùng:</label>
+                    <input type="text" class="form-control" id="pwd" name="CachDung" required>
+                    <label for="pwd">Mã bệnh:</label>
+                    <select class="form-control" id="sel1" name="MaBenh">
+                        @foreach (var items in ViewBag.dsLoaiBenh)
+                        {
+                            <option value="@items.MaBenh">@items.TenBenh</option>
+                        }
+                    </select>
+                    <br />
+                    <input type="submit" value="Thêm thuốc" class="btn btn-info" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+

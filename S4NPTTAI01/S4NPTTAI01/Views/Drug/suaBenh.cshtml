@@ -1,0 +1,55 @@
+﻿@model S4NPTTAI01.Models.Benh
+@{
+    ViewBag.Title = "Sửa Bệnh";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Content/ThemThuoc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+@Html.ValidationSummary(true, null)
+@using (Html.BeginForm("suaBenh", "Drug", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="contain-all">
+        <div class="Review-Avatar">
+            <div id="ava">
+                <img id="iconPick" width="200px" src="~/Content/avatar/@Model.Hinh">
+            </div>
+            <input type="file" name="Icon" class="btn btn-info" onchange="loadFile(event)" required>
+        </div>
+        <div class="Input">
+            <form>
+                <div class="form-group">
+                    <label for="pwd">Tên bệnh:</label>
+                    <input type="text" class="form-control" id="pwd" name="TenB" value="@Model.TenB" required>
+                    <input type="hidden" class="form-control" id="pwd" name="MaB" value="@Model.MaB" required>
+                    <label for="pwd">Triệu chứng:</label>
+                    <input type="text" class="form-control" id="pwd" name="TrieuChung" value="@Model.TrieuChung" required>
+                    <label for="pwd">Ngày bệnh:</label>
+                    <input type="date" class="form-control" name="NgayBenh" id="pwd" value="@Model.NgayBenh.Value.ToString("yyyy-MM-dd")" required>
+                    <label for="pwd">Mã bệnh:</label>
+                    <select class="form-control" id="sel1" name="MaBenh">
+                        @foreach (var items in ViewBag.dsLoaiBenh)
+                        {
+                            <option value="@items.MaBenh">@items.TenBenh</option>
+                        }
+                    </select>
+                    <br />
+                    <input type="submit" value="Sửa bệnh" class="btn btn-info" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('iconPick');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>

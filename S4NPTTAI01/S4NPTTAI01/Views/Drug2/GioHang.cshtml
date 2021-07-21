@@ -1,0 +1,45 @@
+﻿@model List<S4NPTTAI01.Models.Giohang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+@if (Model != null)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã giỏ hàng</th>
+            <th>Mã hàng</th>
+            <th>Tên hàng</th>
+            <th>Số lượng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.MaGioHang</td>
+                <td>@items.MaHang</td>
+                <td>@items.TenHang</td>
+                <td>
+                    <button onclick="location.href='@Url.Action("TangGiamGH", "Drug2", new { Id = items.MaHang, Flag = "Giam"})'" class="btn btn-danger">-</button>
+                    @items.SoLuong
+                    <button onclick="location.href='@Url.Action("TangGiamGH", "Drug2", new { Id = items.MaHang, Flag = "Tang"})'" class="btn btn-warning">+</button>
+                    <button onclick="location.href='@Url.Action("TangGiamGH", "Drug2", new { Id = items.MaHang, Flag = "Xoa"})'" class="btn btn-success">Xóa</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <h3>Bạn chưa có hàng nào trong giỏ!</h3>
+}
+
+

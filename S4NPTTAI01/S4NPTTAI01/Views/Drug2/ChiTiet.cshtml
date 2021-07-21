@@ -1,0 +1,27 @@
+﻿@model S4NPTTAI01.Models.Thuoc
+@{
+    ViewBag.Title = "ThemThuoc";
+    Layout = "~/Views/Shared/_DrugLayout.cshtml";
+}
+
+@section header{
+    <link rel="stylesheet" href="~/Content/ThemThuoc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+<div class="contain-all">
+    <div class="Review-Avatar">
+        <div id="ava">
+            <img id="iconPick" width="200px" src="~/Content/gettyimages-826753434_custom-4b8d6dc04d2e72b759aae4abc32570d6c84f15b9.jpg">
+        </div>
+    </div>
+    <div class="Input">
+        <form>
+            <div class="form-group">
+                <p for="pwd"><b>Tên thuốc:</b> @Model.TenT</p>
+                <p for="pwd"><b>Dạng thuốc:</b> @Model.DangThuoc</p>
+                <p for="pwd"><b>Cách dùng:</b> @Model.CachDung</p>
+                <p for="pwd"><b>Mã bệnh:</b> @Model.MaBenh</p>
+            </div>
+        </form>
+    </div>
+</div>
