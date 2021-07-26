@@ -1,0 +1,50 @@
+﻿@model List<CartProject.Models.GioHangSession>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayourCart.cshtml";
+}
+
+@section header{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+@if (Model != null && ViewBag.TongTien != 0)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã Linh Kiện</th>
+            <th>Tên Linh Kiện</th>
+            <th>Hãng Sản Xuất</th>
+            <th>Đơn Giá Linh Kiện</th>
+            <th>Số Lượng</th>
+            <th>Thành Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.MaLK</td>
+                <td>@items.TenLK</td>
+                <td>@items.HangSX</td>
+                <td>@items.DonGiaLK</td>
+                <td>
+                    <button onclick="location.href='@Url.Action("TangGiamGH", "Cart", new { Id = items.MaLK, Flag = "Giam"})'" class="btn btn-danger">-</button>
+                    @items.SoLuong
+                    <button onclick="location.href='@Url.Action("TangGiamGH", "Cart", new { Id = items.MaLK, Flag = "Tang"})'" class="btn btn-warning">+</button>
+                    <button onclick="location.href='@Url.Action("TangGiamGH", "Cart", new { Id = items.MaLK, Flag = "Xoa"})'" class="btn btn-success">Xóa</button>
+                </td>
+                <td>@items.ThanhTien</td>
+            </tr>
+        }
+        <caption style="text-align: right; font-weight: bold; margin-right: 20px; color: red">Tổng tiền: @ViewBag.TongTien</caption>
+        <button onclick="location.href='@Url.Action("LuuGioHang", "Cart")'" class="btn btn-info">Lưu giỏ hàng</button>
+    </tbody>
+</table>
+}
+else
+{
+    <h3>Giỏ hàng bạn đang trống</h3>
+}
+

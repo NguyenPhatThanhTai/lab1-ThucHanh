@@ -1,0 +1,49 @@
+﻿@model List<CartProject.Models.LinhKien>
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_LayourCart.cshtml";
+}
+
+@section header{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã Linh Kiện</th>
+            <th>Tên Linh Kiện</th>
+            <th>Mô Tả</th>
+            <th>Hãng Sản Xuất</th>
+            <th>Giá Linh Kiện</th>
+            <th>Số Lượng Tồn</th>
+            <th>Đặt Hàng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+        <tr>
+            <td>@items.MaLK</td>
+            <td>@items.TenLK</td>
+            <td>@items.MoTa</td>
+            <td>@items.HangSX</td>
+            <td>@items.GiaLK</td>
+            <td>@items.SoLuongTon</td>
+            @if (@items.SoLuongTon == 0)
+            {
+                <td>
+                    <button disabled onclick="location.href='@Url.Action("ThemGioHang", "Cart", new { Id = items.MaLK})'" class="btn btn-danger">Hết Hàng</button>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <button onclick="location.href='@Url.Action("ThemGioHang", "Cart", new { Id = items.MaLK})'" class="btn btn-success">Đặt hàng</button>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
